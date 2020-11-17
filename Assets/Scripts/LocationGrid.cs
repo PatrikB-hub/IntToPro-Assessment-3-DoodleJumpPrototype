@@ -13,7 +13,7 @@ namespace DoodleJump.Managers
 
         [SerializeField] private GameObject gridSourceObject;
 
-        [SerializeField] private int gridSideLength = 3;
+        public int gridSideLength = 3;
 
         public int TotalCells
         {

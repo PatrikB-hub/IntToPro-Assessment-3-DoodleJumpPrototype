@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DoodleJump.Object.Platform;
+using DoodleJump.Managers;
 
 namespace DoodleJump.Player
 {
@@ -9,6 +10,10 @@ namespace DoodleJump.Player
     {
         public static DJPlayer instance;
         public Rigidbody rb;
+
+        [SerializeField]
+        private GameObject locationGridObject;
+        private LocationGrid locationGrid;
 
         private void Awake()
         {
@@ -27,11 +32,13 @@ namespace DoodleJump.Player
         private void Start()
         {
             rb = GetComponent<Rigidbody>();
+            locationGrid = locationGridObject.GetComponent<LocationGrid>();
         }
 
         private void Update()
         {
             HorizontalAndForwardMovement(5f);
+            SpawnOpposite();
         }
 
         private void HorizontalAndForwardMovement(float _forceAmount)
@@ -67,7 +74,28 @@ namespace DoodleJump.Player
             {
                 return false;
             }
+        }
 
+        private void SpawnOpposite()
+        {
+            if (Mathf.Abs(transform.position.x) > locationGrid.gridSideLength * 0.5f)
+            {
+                Vector3 playerPosition = transform.position;
+                playerPosition.x = -playerPosition.x;
+                playerPosition.z = -playerPosition.z;
+                transform.position = playerPosition;
+            }
+            else if (Mathf.Abs(transform.position.z) > locationGrid.gridSideLength * 0.5f)
+            {
+                Vector3 playerPosition = transform.position;
+                playerPosition.x = -playerPosition.x;
+                playerPosition.z = -playerPosition.z;
+                transform.position = playerPosition;
+            }
+            else
+            {
+                return;
+            }
         }
 
         private void OnCollisionEnter(Collision collision)

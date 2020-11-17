@@ -11,8 +11,6 @@ namespace DoodleJump.Managers
 
         public List<GameObject> platforms = new List<GameObject>();
 
-        public bool isOn = false;
-
         private void Awake()
         {
             if (instance == null)

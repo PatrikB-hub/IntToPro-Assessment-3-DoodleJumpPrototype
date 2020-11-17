@@ -10,7 +10,7 @@ namespace DoodleJump.Object.Cell
     public class GridObject : MonoBehaviour
     {
         private float platformHalfCheckBox = 0.6f;
-        private float playerHalfCheckBox = 0.5f;
+        private float playerHalfCheckBox = 0.6f;
 
         private GameObject gridLocation;
 
