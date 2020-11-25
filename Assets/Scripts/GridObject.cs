@@ -52,7 +52,7 @@ namespace DoodleJump.Object.Cell
 
         private bool PlatformCheck()
         {
-            foreach (GameObject gO in PlatformManager.instance.platforms)
+            foreach (GameObject gO in PlatformManager.instance.allPlatforms)
             {
                 if (gO.transform.position.y > gridLocation.transform.position.y)
                 {

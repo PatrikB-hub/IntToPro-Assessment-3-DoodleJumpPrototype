@@ -14,8 +14,7 @@ namespace DoodleJump.Object.Platform
 
         private void Start()
         {
-            PlatformManager.instance.platforms.Add(gameObject);
+            PlatformManager.instance.allPlatforms.Add(gameObject);
         }
-
     }
 }
